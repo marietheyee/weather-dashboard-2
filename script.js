@@ -1,6 +1,3 @@
-// Jamie Morris Homework-6 Weather Dashboard
-
-// Variables 
 var searchButton = $(".searchButton");
 
 var apiKey = "57c0f60c4e5142c3c69fcb7ba9e65c2a";
@@ -21,9 +18,8 @@ searchButton.click(function () {
 
     var searchInput = $(".searchInput").val();
 
-    // Variable for current weather working 
+    // Var for current and five day forecast
     var urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput + "&Appid=" + apiKey + "&units=imperial";
-    // Variable for 5 day forecast working
     var urlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput + "&Appid=" + apiKey + "&units=imperial";
 
 
@@ -34,8 +30,6 @@ searchButton.click(function () {
             url: urlCurrent,
             method: "GET"
         }).then(function (response) {
-            // list-group append an li to it with just set text
-            // console.log(response.name);
             var cityName = $(".list-group").addClass("list-group-item");
             cityName.append("<li>" + response.name + "</li>");
             // Local storage
@@ -46,7 +40,7 @@ searchButton.click(function () {
             var currentCard = $(".currentCard").append("<div>").addClass("card-body");
             currentCard.empty();
             var currentName = currentCard.append("<p>");
-            // .addClass("card-text");
+            ;
             currentCard.append(currentName);
 
             // Adjust Date 
@@ -55,7 +49,6 @@ searchButton.click(function () {
             currentName.append(`<img src="https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png">`);
             // Add Temp 
             var currentTemp = currentName.append("<p>");
-            // .addClass("card-text");
             currentName.append(currentTemp);
             currentTemp.append("<p>" + "Temperature: " + response.main.temp + "</p>");
             // Add Humidity
@@ -75,7 +68,7 @@ searchButton.click(function () {
                 var currentUV = currentTemp.append("<p>" + "UV Index: " + response.value + "</p>").addClass("card-text");
                 currentUV.addClass("UV");
                 currentTemp.append(currentUV);
-                // currentUV.append("UV Index: " + response.value);
+               
             });
 
         });

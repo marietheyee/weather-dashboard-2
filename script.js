@@ -1,9 +1,11 @@
+// Jamie Morris Homework-6 Weather Dashboard
+
 // Variables 
 var searchButton = $(".searchButton");
 
 var apiKey = "57c0f60c4e5142c3c69fcb7ba9e65c2a";
 
-//For loop
+// Forloop for persisting the data onto HMTL page
 for (var i = 0; i < localStorage.length; i++) {
 
     var city = localStorage.getItem(i);
@@ -12,15 +14,16 @@ for (var i = 0; i < localStorage.length; i++) {
 
     cityName.append("<li>" + city + "</li>");
 }
-// Local storage count
+// Key count for local storage 
 var keyCount = 0;
 // Search button click event
 searchButton.click(function () {
 
     var searchInput = $(".searchInput").val();
 
-    // Current weather & 5 day weather vars
+    // Variable for current weather working 
     var urlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput + "&Appid=" + apiKey + "&units=imperial";
+    // Variable for 5 day forecast working
     var urlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchInput + "&Appid=" + apiKey + "&units=imperial";
 
 
@@ -31,13 +34,15 @@ searchButton.click(function () {
             url: urlCurrent,
             method: "GET"
         }).then(function (response) {
+            // list-group append an li to it with just set text
+            // console.log(response.name);
             var cityName = $(".list-group").addClass("list-group-item");
             cityName.append("<li>" + response.name + "</li>");
             // Local storage
             var local = localStorage.setItem(keyCount, response.name);
             keyCount = keyCount + 1;
 
-            // Current weather append
+            // Start Current Weather append 
             var currentCard = $(".currentCard").append("<div>").addClass("card-body");
             currentCard.empty();
             var currentName = currentCard.append("<p>");
@@ -50,7 +55,7 @@ searchButton.click(function () {
             currentName.append(`<img src="https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png">`);
             // Add Temp 
             var currentTemp = currentName.append("<p>");
-            // addClass
+            // .addClass("card-text");
             currentName.append(currentTemp);
             currentTemp.append("<p>" + "Temperature: " + response.main.temp + "</p>");
             // Add Humidity
@@ -70,16 +75,17 @@ searchButton.click(function () {
                 var currentUV = currentTemp.append("<p>" + "UV Index: " + response.value + "</p>").addClass("card-text");
                 currentUV.addClass("UV");
                 currentTemp.append(currentUV);
-            
+                // currentUV.append("UV Index: " + response.value);
             });
 
         });
 
-        //Call 5-day forecast
+        // Start call for 5-day forecast 
         $.ajax({
             url: urlFiveDay,
             method: "GET"
         }).then(function (response) {
+            // Array for 5-days 
             var day = [0, 8, 16, 24, 32];
             var fiveDayCard = $(".fiveDayCard").addClass("card-body");
             var fiveDayDiv = $(".fiveDayOne").addClass("card-text");

@@ -16,7 +16,7 @@ Upon launching the website, the user is prompted to enter a city name. Once they
  * JQuery
 
  ## Screenshot
- ![](../../../Screen%20Shot%202022-07-05%20at%202.57.36%20PM%20(2).png)
+/Users/marieyee/Pictures/Photos Library.photoslibrary/originals/4/48EB8F43-8404-4168-B11F-FC63FFC203F6.png
 
  ## URL
  

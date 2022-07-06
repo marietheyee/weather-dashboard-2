@@ -14,9 +14,7 @@ Upon launching the website, the user is prompted to enter a city name. Once they
  * CSS
  * Javascript
  * JQuery
-
- ## Screenshot
-/Users/marieyee/Pictures/Photos Library.photoslibrary/originals/4/48EB8F43-8404-4168-B11F-FC63FFC203F6.png
-
+ 
  ## URL
  
+  https://marietheyee.github.io/weather-dashboard-2/
